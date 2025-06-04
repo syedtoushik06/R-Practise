@@ -1,0 +1,78 @@
+---
+title: "Class 09 - Data Visualization with ggplot2"
+author: "Md. Ahsanul Islam"
+date: "2025-01-21"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Packages
+
+Loading required packages:
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+```
+
+
+# Scatter Plot
+
+
+```{r}
+ggplot(data = iris) + 
+  geom_point(mapping = aes(x = Sepal.Length, y = Sepal.Width))
+```
+
+```{r}
+ggplot(data = iris) +
+  aes(x = Sepal.Length, y = Sepal.Width) +
+  geom_point() 
+ 
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point(color = "tomato1")
+
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point(size = 3)
+
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point(shape = 16)
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point(shape = "diamond filled")
+
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, col = Species)) +
+  geom_point()
+
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, col = Species)) +
+  geom_point() + 
+  labs(x = "Sepal Length", y = "Sepal Width", col = "Species", 
+       title = "Scatter Plot of Sepal Length vs Width")
+```
+
+# Histogram
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length)) +
+  geom_histogram(binwidth = 1, fill = "lightblue", col = "white")
+
+ggplot(data = iris) +
+  geom_histogram(aes(x = Sepal.Length), bins = 10, fill = "lightblue", col = "black") 
+
+ggplot(data = iris) +
+  geom_histogram(aes(x = Sepal.Length), bins = 10, fill = "lightblue", col = "white") 
+
+ggplot(data = iris) +
+  geom_histogram(aes(x = Sepal.Length, fill = Species), bins = 10, col = "white")
+
+ggplot(data = iris) +
+  geom_histogram(aes(x = Sepal.Length, fill = Species), bins = 10, col = "white", alpha = 0.6)
+```
